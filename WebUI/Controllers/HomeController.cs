@@ -20,5 +20,13 @@ namespace WebUI.Controllers
         {
             return View();
         }
+        public ActionResult About()
+        {
+            return View();
+        }
+        public ActionResult VIP()
+        {
+            return View();
+        }
     }
 }

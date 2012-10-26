@@ -44,5 +44,13 @@ namespace WebUI.Controllers
 
             return RedirectToAction("Index", "Home");
         }
+        public ActionResult Register()
+        {
+            return View();
+        }
+        public ActionResult ForgetPassWord()
+        {
+            return View();
+        }
     }
 }

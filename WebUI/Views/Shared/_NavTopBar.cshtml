@@ -10,17 +10,16 @@
             <a class="brand" href="#">友学网</a>
             <div class="nav-collapse collapse">
                 <ul class="nav">
-                    <li class="active"><a href="#">首页</a></li>
-                    <li><a href="#about">关于我们</a></li>
-                    <li><a href="#contact">注册</a></li>
+                    <li class="active">@Html.ActionLink("首页", "Index", "Home")</li>
+                    <li>@Html.ActionLink("注册", "Register", "Account")</li>
+                    <li>@Html.ActionLink("登录", "Logon", "Account")</li>
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">更多 <b class="caret"></b></a>
                         <ul class="dropdown-menu">
-                            <li><a href="#">修改密码</a></li>
-                            <li><a href="#">忘记密码</a></li>
-                            <li><a href="#">联系我们</a></li>
+                            <li>@Html.ActionLink("忘记密码", "ForgetPassWord", "Account")</li>
+                            <li>@Html.ActionLink("关于我们", "About", "Home")</li>
                             <li class="divider"></li>
-                            <li><a href="#">购买VIP</a></li>
+                            <li>@Html.ActionLink("购买VIP", "VIP", "Home")</li>
 
                         </ul>
                     </li>
@@ -43,13 +42,15 @@
                 }
                 else
                 {
-                    <form class="navbar-form pull-right" action="/account/logon" method="post">
+                    <form class="navbar-form pull-right form-inline" action="/account/logon" method="post">
                         @Html.TextBoxFor(m => m.Email, new { style = "", placeholder = "输入绑定邮箱：", @class = "span2" })
                         @Html.PasswordFor(m => m.Password, new { style = "", placeholder = "输入账号密码：", @class = "span2" })
+                        <label class="checkbox">
+                            记住我？
+                            @Html.CheckBoxFor(m => m.RememberMe, new { })
+                        </label>
+
                         <button type="submit" class="btn">登录</button>
-                        <div style="float: right; margin-top: 5px">
-                            @Html.ValidationSummary(true, "有错误！")
-                        </div>
                     </form>
                 }
 
