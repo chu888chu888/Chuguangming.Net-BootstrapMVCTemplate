@@ -30,8 +30,8 @@ namespace WebUI.Controllers
                 {
                     FormsAuthentication.SetAuthCookie(model.Email, model.RememberMe);
 
-                        Session["UserName"] = model.Email;
-                        return RedirectToAction("Manager", "Home");
+                    Session["UserName"] = model.Email;
+                    return RedirectToAction("Manager", "Home");
                 }
             }
 

@@ -1,5 +1,51 @@
 ﻿@{
     ViewBag.Title = "Register";
 }
+<style type="text/css">
+    body {
+        padding-top: 40px;
+        padding-bottom: 40px;
+        background-color: #f5f5f5;
+    }
 
-<h2>Register</h2>
+    .form-signin {
+        max-width: 400px;
+        padding: 19px 29px 29px;
+        margin: 0 auto 20px;
+        background-color: #fff;
+        border: 1px solid #e5e5e5;
+        -webkit-border-radius: 5px;
+        -moz-border-radius: 5px;
+        border-radius: 5px;
+        -webkit-box-shadow: 0 1px 2px rgba(0,0,0,.05);
+        -moz-box-shadow: 0 1px 2px rgba(0,0,0,.05);
+        box-shadow: 0 1px 2px rgba(0,0,0,.05);
+    }
+
+        .form-signin .form-signin-heading,
+        .form-signin .checkbox {
+            margin-bottom: 10px;
+        }
+
+        .form-signin input[type="text"],
+        .form-signin input[type="password"] {
+            font-size: 16px;
+            height: auto;
+            margin-bottom: 15px;
+            padding: 7px 9px;
+        }
+</style>
+<div id="logindiv" style="margin-top: 80px;">
+
+    <form class="form-signin">
+        <h2 class="form-signin-heading">请您注册</h2>
+
+        <label>请您输入您的注册邮箱</label>
+        <input type="text" class="input-block-level" placeholder="邮箱地址">
+        <label>请输入密码</label>
+        <input type="password" class="input-block-level" placeholder="密码">
+        <label>再次密码，请保证二次密码一致</label>
+        <input type="password" class="input-block-level" placeholder="再次输入密码">
+        <button class="btn btn-large btn-primary" type="submit">注册用户</button>
+    </form>
+</div>
