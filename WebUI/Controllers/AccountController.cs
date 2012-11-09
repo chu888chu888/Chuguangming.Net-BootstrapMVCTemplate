@@ -26,7 +26,7 @@ namespace WebUI.Controllers
         {
             if (ModelState.IsValid)
             {
-                if (model.Email == "chu888chu888@gmail.com" && model.Password == "2711632")
+                if (model.Email == "chu888chu888" && model.Password == "123456")
                 {
                     FormsAuthentication.SetAuthCookie(model.Email, model.RememberMe);
 

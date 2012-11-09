@@ -1,7 +1,7 @@
 ﻿@{
     ViewBag.Title = "Logon";
 }
-
+@model WebUI.Models.AccountModels.LogOnModel
 <style type="text/css">
     body {
         padding-top: 40px;
@@ -36,17 +36,19 @@
             padding: 7px 9px;
         }
 </style>
-<div id="logindiv" style="margin-top:80px;">
-
-    <form class="form-signin">
+<div id="logindiv" style="margin-top: 80px;">
+    <form class="form-signin" action="/account/logon" method="post">
         <h2 class="form-signin-heading">请您登录</h2>
-        <input type="text" class="input-block-level" placeholder="邮箱地址">
-        <input type="password" class="input-block-level" placeholder="密码">
+        @Html.TextBoxFor(m => m.Email, new { style = "", placeholder = "输入绑定邮箱：", @class = "input-block-level" })
+        @Html.PasswordFor(m => m.Password, new { style = "", placeholder = "输入账号密码：", @class = "input-block-level" })
+
+
         <label class="checkbox">
-            <input type="checkbox" value="remember-me">
+            @Html.CheckBoxFor(m => m.RememberMe, new { })
             记住我
         </label>
-        <button class="btn btn-large btn-primary" type="submit">登录</button>
+
+        <button type="submit" class="btn btn-large btn-primary">登录</button>
     </form>
 </div>
 
