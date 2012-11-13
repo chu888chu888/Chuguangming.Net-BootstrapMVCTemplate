@@ -1,51 +1,153 @@
 ﻿@{
     ViewBag.Title = "Register";
+    Layout = null;
 }
-<style type="text/css">
-    body {
-        padding-top: 40px;
-        padding-bottom: 40px;
-        background-color: #f5f5f5;
-    }
+@model WebUI.Models.AccountModels.RegisterModel
 
-    .form-signin {
-        max-width: 400px;
-        padding: 19px 29px 29px;
-        margin: 0 auto 20px;
-        background-color: #fff;
-        border: 1px solid #e5e5e5;
-        -webkit-border-radius: 5px;
-        -moz-border-radius: 5px;
-        border-radius: 5px;
-        -webkit-box-shadow: 0 1px 2px rgba(0,0,0,.05);
-        -moz-box-shadow: 0 1px 2px rgba(0,0,0,.05);
-        box-shadow: 0 1px 2px rgba(0,0,0,.05);
-    }
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>@ViewBag.Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Le styles -->
+    <link href="@Url.Content("~/Content/Bootstrap/css/bootstrap.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/Bootstrap/css/bootstrap-responsive.css")" rel="stylesheet" type="text/css" />
 
-        .form-signin .form-signin-heading,
-        .form-signin .checkbox {
-            margin-bottom: 10px;
+    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="/Content/Bootstrap/docs/assets/js/html5.js"></script>
+    <![endif]-->
+    <style type="text/css">
+        body {
+            padding-top: 60px;
+            padding-bottom: 40px;
+            background-color: #f5f5f5;
+        }
+        /* Set the fixed height of the footer here */
+        #footer {
+            margin-top: 50px;
+            height: 60px;
+            background-color: #f5f5f5;
+        }
+    </style>
+    <style type="text/css">
+        body {
+            padding-top: 40px;
+            padding-bottom: 40px;
+            background-color: #f5f5f5;
         }
 
-        .form-signin input[type="text"],
-        .form-signin input[type="password"] {
-            font-size: 16px;
-            height: auto;
-            margin-bottom: 15px;
-            padding: 7px 9px;
+        .form-signin {
+            max-width: 400px;
+            padding: 19px 29px 29px;
+            margin: 0 auto 20px;
+            background-color: #fff;
+            border: 1px solid #e5e5e5;
+            -webkit-border-radius: 5px;
+            -moz-border-radius: 5px;
+            border-radius: 5px;
+            -webkit-box-shadow: 0 1px 2px rgba(0,0,0,.05);
+            -moz-box-shadow: 0 1px 2px rgba(0,0,0,.05);
+            box-shadow: 0 1px 2px rgba(0,0,0,.05);
         }
-</style>
-<div id="logindiv" style="margin-top: 80px;">
 
-    <form class="form-signin">
-        <h2 class="form-signin-heading">请您注册</h2>
+            .form-signin .form-signin-heading,
+            .form-signin .checkbox {
+                margin-bottom: 10px;
+            }
 
-        <label>请您输入您的注册邮箱</label>
-        <input type="text" class="input-block-level" placeholder="邮箱地址">
-        <label>请输入密码</label>
-        <input type="password" class="input-block-level" placeholder="密码">
-        <label>再次密码，请保证二次密码一致</label>
-        <input type="password" class="input-block-level" placeholder="再次输入密码">
-        <button class="btn btn-large btn-primary" type="submit">注册用户</button>
-    </form>
-</div>
+            .form-signin input[type="text"],
+            .form-signin input[type="password"] {
+                font-size: 16px;
+                height: auto;
+                margin-bottom: 15px;
+                padding: 7px 9px;
+            }
+    </style>
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="navbar-inner">
+            <div class="container">
+                <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </a>
+                <a class="brand" href="#">友学网</a>
+                <div class="nav-collapse collapse">
+                    <ul class="nav">
+                        <li class="active">@Html.ActionLink("首页", "Index", "Home")</li>
+                        <li>@Html.ActionLink("注册", "Register", "Account")</li>
+                        <li>@Html.ActionLink("登录", "Logon", "Account")</li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">更多 <b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li>@Html.ActionLink("忘记密码", "ForgetPassWord", "Account")</li>
+                                <li>@Html.ActionLink("关于我们", "About", "Home")</li>
+                                <li class="divider"></li>
+                                <li>@Html.ActionLink("购买VIP", "VIP", "Home")</li>
+
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+                <!--/.nav-collapse -->
+            </div>
+        </div>
+
+
+    </div>
+    <div class="container">
+        <div id="logindiv" style="margin-top: 80px;">
+
+            <form class="form-signin" method="post" action="/Account/Register">
+                <h2 class="form-signin-heading">请您注册</h2>
+                <label>请您输入您的注册邮箱</label>
+                @Html.TextBoxFor(m => m.Email, new { style = "", placeholder = "", @class = "input-block-level" })
+                @Html.ValidationMessageFor(m => m.Email)
+                <label>请您输入您的账户名称</label>
+                @Html.TextBoxFor(m => m.UserName, new { style = "", placeholder = "", @class = "input-block-level" })
+                @Html.ValidationMessageFor(m => m.UserName)
+                <label>请输入密码</label>
+                @Html.TextBoxFor(m => m.Password, new { style = "", placeholder = "", @class = "input-block-level" })
+                @Html.ValidationMessageFor(m => m.Password)
+                <label>再次密码，请保证二次密码一致</label>
+                @Html.TextBoxFor(m => m.ConfirmPassword, new { style = "", placeholder = "", @class = "input-block-level" })
+                @Html.ValidationMessageFor(m => m.ConfirmPassword)
+
+                <button class="btn btn-large btn-primary" type="submit">注册用户</button>
+            </form>
+        </div>
+    </div>
+    <div id="footer">
+        <div class="container">
+            <p class="muted credit">楚广明 MVC开发样例 <a href="http://www.cnblogs.com/chu888chu888">chu888chu888</a></p>
+        </div>
+
+    </div>
+
+    <!-- Le javascript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="/Content/Bootstrap/js/jquery.js"></script>
+    <script src="/Content/Bootstrap/js/bootstrap-transition.js"></script>
+    <script src="/Content/Bootstrap/js/bootstrap-alert.js"></script>
+    <script src="/Content/Bootstrap/js/bootstrap-modal.js"></script>
+    <script src="/Content/Bootstrap/js/bootstrap-dropdown.js"></script>
+    <script src="/Content/Bootstrap/js/bootstrap-scrollspy.js"></script>
+    <script src="/Content/Bootstrap/js/bootstrap-tab.js"></script>
+    <script src="/Content/Bootstrap/js/bootstrap-tooltip.js"></script>
+    <script src="/Content/Bootstrap/js/bootstrap-popover.js"></script>
+    <script src="/Content/Bootstrap/js/bootstrap-button.js"></script>
+    <script src="/Content/Bootstrap/js/bootstrap-collapse.js"></script>
+    <script src="/Content/Bootstrap/js/bootstrap-carousel.js"></script>
+    <script src="@Url.Content("~/Content/Bootstrap/js/bootstrap-typeahead.js")" type="text/javascript"></script>
+</body>
+</html>
+
+
+
+
+

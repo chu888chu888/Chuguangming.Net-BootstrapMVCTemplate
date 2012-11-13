@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
+using WebBusiness.AccountBusiness;
 
 namespace WebUI.Controllers
 {
@@ -26,11 +27,9 @@ namespace WebUI.Controllers
         {
             if (ModelState.IsValid)
             {
-                if (model.Email == "chu888chu888" && model.Password == "123456")
+                if (AccountOperation.LoginCheck(model.Email,model.Password))
                 {
                     FormsAuthentication.SetAuthCookie(model.Email, model.RememberMe);
-
-                    Session["UserName"] = model.Email;
                     return RedirectToAction("Manager", "Home");
                 }
             }
@@ -48,9 +47,28 @@ namespace WebUI.Controllers
         {
             return View();
         }
+        [HttpPost]
+        public ActionResult Register(WebUI.Models.AccountModels.RegisterModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                //实现注册
+                if (AccountOperation.RegisterUser(model.UserName,model.Password,model.Email))
+                {
+                    FormsAuthentication.SetAuthCookie(model.Email, false);
+                    return RedirectToAction("Manager", "Home");
+                }
+                else
+                {
+                    return View(model);
+                }
+            }
+            return View(model);
+        }
         public ActionResult ForgetPassWord()
         {
             return View();
         }
+
     }
 }
