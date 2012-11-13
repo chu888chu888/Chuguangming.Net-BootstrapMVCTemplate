@@ -29,7 +29,8 @@ namespace WebUI.Controllers
             {
                 if (AccountOperation.LoginCheck(model.Email,model.Password))
                 {
-                    FormsAuthentication.SetAuthCookie(model.Email, model.RememberMe);
+                    FormsAuthentication.SetAuthCookie(AccountOperation.GetUserID(model.Email, model.Password),true);
+                    
                     return RedirectToAction("Manager", "Home");
                 }
             }
@@ -53,9 +54,15 @@ namespace WebUI.Controllers
             if (ModelState.IsValid)
             {
                 //实现注册
-                if (AccountOperation.RegisterUser(model.UserName,model.Password,model.Email))
+                string guid = Guid.NewGuid().ToString();
+                if (AccountOperation.RegisterUser(guid,model.UserName, model.Password, model.Email))
                 {
-                    FormsAuthentication.SetAuthCookie(model.Email, false);
+                    FormsAuthentication.SetAuthCookie(guid, true);
+                    HttpCookie cookie = FormsAuthentication.GetAuthCookie(guid, true);
+                    cookie.Expires = DateTime.Today.AddMonths(1);
+                    Response.Cookies.Add(cookie);
+                    
+
                     return RedirectToAction("Manager", "Home");
                 }
                 else

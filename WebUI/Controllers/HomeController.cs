@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.UI;
 
 namespace WebUI.Controllers
 {
@@ -18,6 +19,8 @@ namespace WebUI.Controllers
         }
         public ActionResult Manager()
         {
+            ViewBag.UserID = this.HttpContext.User.Identity.Name;
+            
             return View();
         }
         public ActionResult About()

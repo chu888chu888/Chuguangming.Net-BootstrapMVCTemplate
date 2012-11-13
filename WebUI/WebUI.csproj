@@ -124,10 +124,13 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\NoteController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountModels.cs" />
+    <Compile Include="Models\CVIntArray.cs" />
+    <Compile Include="Models\NoteModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -288,6 +291,9 @@
     <Content Include="Views\Account\ForgetPassWord.cshtml" />
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\VIP.cshtml" />
+    <Content Include="Views\Note\Index.cshtml" />
+    <Content Include="Views\Note\BrowseAll.cshtml" />
+    <Content Include="Views\Note\Append.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

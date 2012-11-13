@@ -26,11 +26,30 @@ namespace WebBusiness.AccountBusiness
                 return false;
             }
         }
-        public static bool RegisterUser(string user_name, string user_password, string user_email)
+        public static string GetUserID(string user_name, string user_password)
         {
-            SqlParameter[] registerparm = { new SqlParameter("@user_name",user_name),
-                                            new SqlParameter("@user_password",user_password),
-                                            new SqlParameter("@user_email",user_email)
+            SqlParameter[] getidparm = {new SqlParameter("@user_name",user_name),
+                                        new SqlParameter("@user_password",user_password)};
+
+            SqlDataReader returnReader = SQLDataAccess.ExecuteReader(DBInfo.DBString,
+                                        "GetUserID", getidparm);
+            if (returnReader.Read())
+            {
+                return returnReader["SNS_User_ID"].ToString();
+            }
+            else
+            {
+                return string.Empty;
+            }
+        }
+        public static bool RegisterUser(string strguid,string user_name, string user_password, string user_email)
+        {
+           
+            SqlParameter[] registerparm = { new SqlParameter("@user_id",strguid),
+                                            new SqlParameter("@user_email",user_email),
+                                            new SqlParameter("@user_name",user_name),
+                                            new SqlParameter("@user_password",user_password)
+                                            
                                           };
             int returnValue = (int)SQLDataAccess.ExecuteNonQuery(DBInfo.DBString, "RegisterUser", registerparm);
             if (returnValue > 0)

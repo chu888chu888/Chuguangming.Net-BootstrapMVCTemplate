@@ -43,6 +43,7 @@
     <Compile Include="AccountBusiness\AccountOperation.cs" />
     <Compile Include="CommonUtils\Database\SQLDataAccess.cs" />
     <Compile Include="MetaInfo\DBInfo.cs" />
+    <Compile Include="NoteBusiness\NoteOperation.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
