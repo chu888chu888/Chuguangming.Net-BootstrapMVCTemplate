@@ -15,9 +15,9 @@ namespace WebBusiness.NoteBusiness
         {
 
             SqlParameter[] PostNoteparm = { new SqlParameter("@strNoteID",Guid.NewGuid().ToString()),
-                                            new SqlParameter("@PosterTitle",strPosterTitle),
+                                            new SqlParameter("@strPosterID",strPosterID),
                                             new SqlParameter("@strContent",strContent),
-                                            new SqlParameter("@strPosterID",strPosterID)
+                                            new SqlParameter("@PosterTitle",strPosterTitle)
                                           };
             int returnValue = (int)SQLDataAccess.ExecuteNonQuery(DBInfo.DBString, "PostNote", PostNoteparm);
             if (returnValue > 0)

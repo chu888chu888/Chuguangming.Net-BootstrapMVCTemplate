@@ -61,6 +61,20 @@ namespace WebBusiness.AccountBusiness
                 return false;
             }
         }
+        public static string GetUserName(string struid)
+        {
+            SqlParameter uidparm = new SqlParameter("@user_id", struid);
+            SqlDataReader returnReader = SQLDataAccess.ExecuteReader(DBInfo.DBString,
+                                        "GetUserName", uidparm);
+            if (returnReader.Read())
+            {
+                return returnReader["SNS_User_Name"].ToString();
+            }
+            else
+            {
+                return string.Empty;
+            }
+        }
 
     }
 }

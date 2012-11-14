@@ -19,7 +19,7 @@ namespace WebUI.Controllers
         {
             if (this.ModelState.IsValid == false)
             { return View(); }
-            if (NoteOperation.PostNote(fmd.PosterTitle, fmd.Content,Session["PosterID"].ToString()) == true)
+            if (NoteOperation.PostNote(fmd.PosterTitle, fmd.Content,HttpContext.User.Identity.Name) == true)
             {
                 return RedirectToAction("BrowseAll");
             }

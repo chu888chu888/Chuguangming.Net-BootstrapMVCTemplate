@@ -10,8 +10,9 @@ namespace WebUI.Models
     {
         public class FMNote
         {
+            
+            //[RegularExpression(@"^[a-z A-Z 0-9]{5,10}$", ErrorMessage = "格式错误 !")]
             [Required(ErrorMessage = "留言标题不能为空！")]
-            [RegularExpression(@"^[a-z A-Z 0-9]{5,10}$", ErrorMessage = "格式错误 !")]
             public string PosterTitle { get; set; }
 
             [Required(ErrorMessage = "留言内容不能为空！")]
