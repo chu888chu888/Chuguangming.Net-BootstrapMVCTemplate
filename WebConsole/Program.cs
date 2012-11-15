@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using WebBusiness.AccountBusiness;
+using WebBusiness.NoteBusiness;
 
 namespace WebConsole
 {
@@ -11,7 +12,14 @@ namespace WebConsole
     {
         static void Main(string[] args)
         {
-           bool a= AccountOperation.LoginCheck("chu888chu888", "123456");
+            for (int i = 1; i < 1000; i++)
+            {
+                NoteOperation.PostNote(string.Format("测试标题{0}", i.ToString()),
+                    string.Format("测试内容{0}", i.ToString()),
+                    Guid.NewGuid().ToString());
+                
+            }
+            Console.Write("OK");
         }
     }
 }

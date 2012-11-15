@@ -1,5 +1,32 @@
 ﻿@{
-    ViewBag.Title = "BrowseAll";
+    ViewBag.Title = "分页演示";
 }
+@using Webdiyer.WebControls.Mvc
+@using WebUI.Models
+@model PagedList<SNS_Note>
+<link href="~/Content/PagerStyle.css" rel="stylesheet" />
+<table class="table table-hover">
 
-<h2>BrowseAll</h2>
+    <thead>
+        <tr>
+            <th>留言时间</th>
+            <th>留言编号</th>
+            <th>留言内容</th>
+            <th>发言ID</th>
+            <th>留言标题</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (SNS_Note od in Model)
+        {     
+            <tr>
+                <td>@od.SNS_Note_Date</td>
+                <td>@od.SNS_Note_ID</td>
+                <td>@od.SNS_Note_Post_Text</td>
+                <td>@od.SNS_Note_PostID</td>
+                <td>@od.SNS_Note_Title</td>
+            </tr>   
+        }
+    </tbody>
+</table>
+@Html.Pager(Model, new PagerOptions { PageIndexParameterName = "id", CurrentPagerItemWrapperFormatString = "<span class=\"cpb\">{0}</span>", NumericPagerItemWrapperFormatString = "<span class=\"item\">{0}</span>", CssClass = "paginator", SeparatorHtml = "" })

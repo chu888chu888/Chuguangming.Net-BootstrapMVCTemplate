@@ -44,6 +44,8 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Data.Entity" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -129,8 +131,28 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountModels.cs" />
-    <Compile Include="Models\CVIntArray.cs" />
     <Compile Include="Models\NoteModels.cs" />
+    <Compile Include="Models\SNSDB.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SNSDB.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SNSDB.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SNSDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SNSDB.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SNSDB.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SNS_Note.cs">
+      <DependentUpon>SNSDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SNS_User_Info.cs">
+      <DependentUpon>SNSDB.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -195,8 +217,10 @@
     <Content Include="Content\Bootstrap\js\google-code-prettify\prettify.js" />
     <Content Include="Content\Bootstrap\js\html5.js" />
     <Content Include="Content\Bootstrap\js\jquery.js" />
+    <Content Include="Content\images\loginforsina.png" />
     <Content Include="Content\images\bg.gif" />
     <Content Include="Content\images\loading.gif" />
+    <Content Include="Content\PagerStyle.css" />
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_glass_55_fbf9ee_1x400.png" />
@@ -256,6 +280,23 @@
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="Content\Bootstrap\js\README.md" />
+    <EntityDeploy Include="Models\SNSDB.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>SNSDB.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\SNSDB.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>SNSDB.edmx</DependentUpon>
+      <LastGenOutput>SNSDB.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\SNSDB.edmx.diagram">
+      <DependentUpon>SNSDB.edmx</DependentUpon>
+    </Content>
+    <Content Include="Models\SNSDB.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>SNSDB.edmx</DependentUpon>
+      <LastGenOutput>SNSDB.cs</LastGenOutput>
+    </Content>
     <None Include="Scripts\jquery-1.7.1.intellisense.js" />
     <Content Include="Images\1.jpg" />
     <Content Include="Images\10.jpg" />
@@ -348,10 +389,17 @@
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\MvcPager1.5Src3\MvcPager.csproj">
+      <Project>{4ba9f10c-67b7-4cd6-87b1-0519adbca2a1}</Project>
+      <Name>MvcPager</Name>
+    </ProjectReference>
     <ProjectReference Include="..\WebBusiness\WebBusiness.csproj">
       <Project>{1b895fb9-c3ee-4117-804b-d2586f5f422b}</Project>
       <Name>WebBusiness</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

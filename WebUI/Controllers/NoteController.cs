@@ -4,6 +4,8 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using WebBusiness.NoteBusiness;
+using Webdiyer.WebControls.Mvc;
+using WebUI.Models;
 
 namespace WebUI.Controllers
 {
@@ -30,9 +32,14 @@ namespace WebUI.Controllers
             }
         }
         /* 因为首页就分页, 但我们一般首页没有页数参数, 所以用一个可空类型 */
-        public ActionResult BrowseAll()
+        public ActionResult BrowseAll(int id = 1)
         {
-            return View();
+            using (var db = new SNSDBEntities())
+            {
+                PagedList<SNS_Note> orders = db.SNS_Note.OrderByDescending(o => o.SNS_Note_Date).ToPagedList(id, 30);
+                return View(orders);
+            }
         }
+
     }
 }

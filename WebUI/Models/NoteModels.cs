@@ -10,7 +10,7 @@ namespace WebUI.Models
     {
         public class FMNote
         {
-            
+
             //[RegularExpression(@"^[a-z A-Z 0-9]{5,10}$", ErrorMessage = "格式错误 !")]
             [Required(ErrorMessage = "留言标题不能为空！")]
             public string PosterTitle { get; set; }
@@ -19,18 +19,6 @@ namespace WebUI.Models
             [StringLength(1000, ErrorMessage = "请保持在1000个字符之内！")]
             public string Content { get; set; }
 
-        }
-        public class FMNoteHandler
-        {
-            [CVIntArray(ErrorMessage = "请正确选择要处理的项！")]
-            public string[] IDArray { get; set; }
-        }
-        public class FMReply
-        {
-            public string StrIDS { get; set; }
-
-            [Required(ErrorMessage = "回复不能为空！")]
-            public string ReplyText { get; set; }
         }
         public class FMSearch
         {
