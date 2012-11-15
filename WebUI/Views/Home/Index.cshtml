@@ -21,7 +21,7 @@
             padding-bottom: 40px;
             background-color: #f5f5f5;
             font-family: "Microsoft YaHei" !important;
-            font-size:12px;
+            font-size: 12px;
         }
         /* Set the fixed height of the footer here */
         #footer {
@@ -40,10 +40,10 @@
             <div class="span2">
                 <div class="well sidebar-nav">
                     <ul class="nav nav-list">
-                        @foreach (var tmp in ViewBag.classify)
+                        @foreach (var ClassName in ViewBag.classify)
                         {          
                             <li>
-                                <a href="/Home/Detail/@tmp.Key">@tmp.Value</a>
+                                <a href="/Home/Detail/@ClassName.Key">@ClassName.Value</a>
                             </li>
                         }
                     </ul>
@@ -57,167 +57,22 @@
                     <h1>分享流</h1>
 
                     <div id="wallcontainer" class="transitions-enabled infinite-scroll clearfix">
+                        @foreach (var ImageSource in ViewBag.ImageDatasource)
+                        { 
+                            <div class="box showpic">
 
-                        <div class="box showpic">
-                            <div class="picbox">
-                                <a href="#" target="_blank">
-                                    <img width="150" alt="11111111111" original="images/1.jpg" class="txpic" src="images/1.jpg" style="display: block;"></a>
+                                <div class="picbox">
+                                    <a href="#" target="_blank">
+                                        <img width="150" alt="11111111111" original="/images/@ImageSource["SmallImagePath"]" 
+                                            class="txpic" src="/images/@ImageSource["BigImagePath"]" style="display: block;"></a>
+                                </div>
+                                <p>@ImageSource["ImageTitle"]</p>
+                                <div class="actions">
+                                    <div class="lefter"><a class="button white" href="#">评论</a></div>
+                                    <div class="righter"><a class="button white" href="#">分享</a></div>
+                                </div>
                             </div>
-                            <p>11111111111111</p>
-                            <div class="actions">
-                                <div class="lefter"><a class="button white" href="#">评论</a></div>
-                                <div class="righter"><a class="button white" href="#">分享</a></div>
-                            </div>
-                        </div>
-
-                        <div class="box showpic">
-                            <div class="picbox">
-                                <a href="#" target="_blank">
-                                    <img width="150" alt="2222222222222" original="images/2.jpg" class="txpic" src="images/2.jpg" style="display: block;"></a>
-                            </div>
-                            <p>222222 22222222 2222222222 222222 22222 222222 2222222 22222</p>
-                            <div class="actions">
-                                <div class="lefter"><a class="button white" href="#">评论</a></div>
-                                <div class="righter"><a class="button white" href="#">分享</a></div>
-                            </div>
-                        </div>
-
-                        <div class="box showpic">
-                            <div class="picbox">
-                                <a href="#" target="_blank">
-                                    <img width="150" alt="3333333333" original="images/3.jpg" class="txpic" src="images/3.jpg" style="display: block;"></a>
-                            </div>
-                            <p>33333333333333333333</p>
-                            <div class="actions">
-                                <div class="lefter"><a class="button white" href="#">评论</a></div>
-                                <div class="righter"><a class="button white" href="#">分享</a></div>
-                            </div>
-                        </div>
-
-                        <div class="box showpic">
-                            <div class="picbox">
-                                <a href="#" target="_blank">
-                                    <img width="150" alt="44444" original="images/4.jpg" class="txpic" src="images/4.jpg" style="display: block;"></a>
-                            </div>
-                            <p>4444</p>
-                            <div class="actions">
-                                <div class="lefter"><a class="button white" href="#">评论</a></div>
-                                <div class="righter"><a class="button white" href="#">分享</a></div>
-                            </div>
-                        </div>
-
-                        <div class="box showpic">
-                            <div class="picbox">
-                                <a href="#" target="_blank">
-                                    <img width="150" alt="55555" original="images/5.jpg" class="txpic" src="images/5.jpg" style="display: block;"></a>
-                            </div>
-                            <p>5555555555555</p>
-                            <div class="actions">
-                                <div class="lefter"><a class="button white" href="#">评论</a></div>
-                                <div class="righter"><a class="button white" href="#">分享</a></div>
-                            </div>
-                        </div>
-
-                        <div class="box showpic">
-                            <div class="picbox">
-                                <a href="#" target="_blank">
-                                    <img width="150" alt="6666666666666" original="images/6.jpg" class="txpic" src="images/6.jpg" style="display: block;"></a>
-                            </div>
-                            <p>666666666666666666666</p>
-                            <div class="actions">
-                                <div class="lefter"><a class="button white" href="#">评论</a></div>
-                                <div class="righter"><a class="button white" href="#">分享</a></div>
-                            </div>
-                        </div>
-
-                        <div class="box showpic">
-                            <div class="picbox">
-                                <a href="#" target="_blank">
-                                    <img width="150" alt="777777777777" original="images/7.jpg" class="txpic" src="images/7.jpg" style="display: block;"></a>
-                            </div>
-                            <p>77777777777777777</p>
-                            <div class="actions">
-                                <div class="lefter"><a class="button white" href="#">评论</a></div>
-                                <div class="righter"><a class="button white" href="#">分享</a></div>
-                            </div>
-                        </div>
-                        <div class="box showpic">
-                            <div class="picbox">
-                                <a href="#" target="_blank">
-                                    <img width="150" alt="777777777777" original="images/7.jpg" class="txpic" src="images/7.jpg" style="display: block;"></a>
-                            </div>
-                            <p>77777777777777777</p>
-                            <div class="actions">
-                                <div class="lefter"><a class="button white" href="#">评论</a></div>
-                                <div class="righter"><a class="button white" href="#">分享</a></div>
-                            </div>
-                        </div>
-                        <div class="box showpic">
-                            <div class="picbox">
-                                <a href="#" target="_blank">
-                                    <img width="150" alt="777777777777" original="images/7.jpg" class="txpic" src="images/7.jpg" style="display: block;"></a>
-                            </div>
-                            <p>77777777777777777</p>
-                            <div class="actions">
-                                <div class="lefter"><a class="button white" href="#">评论</a></div>
-                                <div class="righter"><a class="button white" href="#">分享</a></div>
-                            </div>
-                        </div>
-                        <div class="box showpic">
-                            <div class="picbox">
-                                <a href="#" target="_blank">
-                                    <img width="150" alt="777777777777" original="images/7.jpg" class="txpic" src="images/7.jpg" style="display: block;"></a>
-                            </div>
-                            <p>77777777777777777</p>
-                            <div class="actions">
-                                <div class="lefter"><a class="button white" href="#">评论</a></div>
-                                <div class="righter"><a class="button white" href="#">分享</a></div>
-                            </div>
-                        </div>
-                        <div class="box showpic">
-                            <div class="picbox">
-                                <a href="#" target="_blank">
-                                    <img width="150" alt="777777777777" original="images/7.jpg" class="txpic" src="images/7.jpg" style="display: block;"></a>
-                            </div>
-                            <p>77777777777777777</p>
-                            <div class="actions">
-                                <div class="lefter"><a class="button white" href="#">评论</a></div>
-                                <div class="righter"><a class="button white" href="#">分享</a></div>
-                            </div>
-                        </div>
-                        <div class="box showpic">
-                            <div class="picbox">
-                                <a href="#" target="_blank">
-                                    <img width="150" alt="777777777777" original="images/7.jpg" class="txpic" src="images/7.jpg" style="display: block;"></a>
-                            </div>
-                            <p>77777777777777777</p>
-                            <div class="actions">
-                                <div class="lefter"><a class="button white" href="#">评论</a></div>
-                                <div class="righter"><a class="button white" href="#">分享</a></div>
-                            </div>
-                        </div>
-                        <div class="box showpic">
-                            <div class="picbox">
-                                <a href="#" target="_blank">
-                                    <img width="150" alt="777777777777" original="images/7.jpg" class="txpic" src="images/7.jpg" style="display: block;"></a>
-                            </div>
-                            <p>77777777777777777</p>
-                            <div class="actions">
-                                <div class="lefter"><a class="button white" href="#">评论</a></div>
-                                <div class="righter"><a class="button white" href="#">分享</a></div>
-                            </div>
-                        </div>
-                        <div class="box showpic">
-                            <div class="picbox">
-                                <a href="#" target="_blank">
-                                    <img width="150" alt="777777777777" original="images/7.jpg" class="txpic" src="images/7.jpg" style="display: block;"></a>
-                            </div>
-                            <p>77777777777777777</p>
-                            <div class="actions">
-                                <div class="lefter"><a class="button white" href="#">评论</a></div>
-                                <div class="righter"><a class="button white" href="#">分享</a></div>
-                            </div>
-                        </div>
+                        }
                     </div>
                     <!--container end-->
 

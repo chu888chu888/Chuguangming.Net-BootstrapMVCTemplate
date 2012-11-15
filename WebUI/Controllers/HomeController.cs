@@ -25,7 +25,20 @@ namespace WebUI.Controllers
             Dictclassify.Add("5", "无限下载");
             ViewBag.classify = Dictclassify;
 
+            List<Dictionary<string, string>> ImageSrcDatasource = new List<Dictionary<string, string>>();
+            Dictionary<string, string> imageDetailDict;
+            for (int i = 1; i <= 36; i++)
+            {
+                imageDetailDict = new Dictionary<string, string>();
+                imageDetailDict.Add("BigImagePath",string.Format("{0}.jpg",i.ToString()));
+                imageDetailDict.Add("SmallImagePath",string.Format("{0}.jpg",i.ToString()));
+                imageDetailDict.Add("ImageTitle","这是一个测试");
+                imageDetailDict.Add("ImageDetail","XXXXXXX");
+                ImageSrcDatasource.Add(imageDetailDict);
+            }
+            ViewBag.ImageDatasource = ImageSrcDatasource;
 
+            
 
             return View();
         }
