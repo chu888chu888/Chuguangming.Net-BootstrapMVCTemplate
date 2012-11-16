@@ -39,10 +39,12 @@
 <div id="logindiv" style="margin-top: 80px;">
     <form class="form-signin" action="/account/logon" method="post">
         <h2 class="form-signin-heading">请您登录</h2>
-        @Html.TextBoxFor(m => m.Email, new { style = "", placeholder = "输入绑定邮箱：", @class = "input-block-level" })
-        @Html.PasswordFor(m => m.Password, new { style = "", placeholder = "输入账号密码：", @class = "input-block-level" })
-
-
+        <label>输入绑定的邮箱</label>
+        @Html.TextBoxFor(m => m.Email, new { style = "", placeholder = "", @class = "input-block-level" })
+        <label>输入密码</label>
+        @Html.PasswordFor(m => m.Password, new { style = "", placeholder = "", @class = "input-block-level" })
+        <label>输入验证码</label>
+        @Html.Partial("_Captcha", new WebUI.Models.Captcha())
         <label class="checkbox">
             @Html.CheckBoxFor(m => m.RememberMe, new { })
             记住我

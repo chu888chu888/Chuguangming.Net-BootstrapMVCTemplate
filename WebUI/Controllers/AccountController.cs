@@ -23,14 +23,20 @@ namespace WebUI.Controllers
             return View();
         }
         [HttpPost]
-        public ActionResult LogOn(WebUI.Models.AccountModels.LogOnModel model)
+        public ActionResult LogOn(WebUI.Models.AccountModels.LogOnModel model, string CaptchaValue)
         {
+            bool cv = CaptchaController.IsValidCaptchaValue(CaptchaValue.ToUpper());
+            if (!cv)
+            {
+                ModelState.AddModelError(string.Empty, "验证码错误");
+                return View();
+            }
             if (ModelState.IsValid)
             {
-                if (AccountOperation.LoginCheck(model.Email,model.Password))
+                if (AccountOperation.LoginCheck(model.Email, model.Password))
                 {
-                    FormsAuthentication.SetAuthCookie(AccountOperation.GetUserID(model.Email, model.Password),true);
-                    
+                    FormsAuthentication.SetAuthCookie(AccountOperation.GetUserID(model.Email, model.Password), true);
+
                     return RedirectToAction("Manager", "Home");
                 }
             }
@@ -55,13 +61,13 @@ namespace WebUI.Controllers
             {
                 //实现注册
                 string guid = Guid.NewGuid().ToString();
-                if (AccountOperation.RegisterUser(guid,model.UserName, model.Password, model.Email))
+                if (AccountOperation.RegisterUser(guid, model.UserName, model.Password, model.Email))
                 {
                     FormsAuthentication.SetAuthCookie(guid, true);
                     HttpCookie cookie = FormsAuthentication.GetAuthCookie(guid, true);
                     cookie.Expires = DateTime.Today.AddMonths(1);
                     Response.Cookies.Add(cookie);
-                    
+
 
                     return RedirectToAction("Manager", "Home");
                 }
