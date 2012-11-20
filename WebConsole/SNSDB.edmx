@@ -1,0 +1,165 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="SNSDBModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityContainer Name="SNSDBModelStoreContainer">
+          <EntitySet Name="SNS_Note" EntityType="SNSDBModel.Store.SNS_Note" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="SNS_User_Info" EntityType="SNSDBModel.Store.SNS_User_Info" store:Type="Tables" Schema="dbo" />
+        </EntityContainer>
+        <EntityType Name="SNS_Note">
+          <Key>
+            <PropertyRef Name="SNS_Note_ID" />
+          </Key>
+          <Property Name="SNS_Note_ID" Type="varchar" Nullable="false" MaxLength="36" />
+          <Property Name="SNS_Note_PostID" Type="varchar" Nullable="false" MaxLength="36" />
+          <Property Name="SNS_Note_Title" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="SNS_Note_Post_Text" Type="nvarchar" Nullable="false" MaxLength="500" />
+          <Property Name="SNS_Note_Reply_ID" Type="int" />
+          <Property Name="SNS_Note_Date" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SNS_User_Info">
+          <Key>
+            <PropertyRef Name="SNS_User_ID" />
+          </Key>
+          <Property Name="SNS_User_ID" Type="varchar" Nullable="false" MaxLength="36" />
+          <Property Name="SNS_User_Email" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="SNS_User_Name" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="SNS_User_PassWord" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="SNS_User_Type" Type="int" />
+        </EntityType>
+        <Function Name="CheckUser" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="user_name" Type="varchar" Mode="In" />
+          <Parameter Name="user_password" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="GetUserID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="user_name" Type="varchar" Mode="In" />
+          <Parameter Name="user_password" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="GetUserName" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="user_id" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="PostNote" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="strNoteID" Type="varchar" Mode="In" />
+          <Parameter Name="strPosterID" Type="varchar" Mode="In" />
+          <Parameter Name="strContent" Type="varchar" Mode="In" />
+          <Parameter Name="PosterTitle" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="RegisterUser" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="user_id" Type="varchar" Mode="In" />
+          <Parameter Name="user_email" Type="varchar" Mode="In" />
+          <Parameter Name="user_name" Type="varchar" Mode="In" />
+          <Parameter Name="user_password" Type="varchar" Mode="In" />
+        </Function>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="SNSDBModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="SNSDBEntities" p1:LazyLoadingEnabled="true">
+          <EntitySet Name="SNS_Note" EntityType="SNSDBModel.SNS_Note" />
+          <EntitySet Name="SNS_User_Info" EntityType="SNSDBModel.SNS_User_Info" />
+          <FunctionImport Name="CheckUser" ReturnType="Collection(Int32)">
+            <Parameter Name="user_name" Mode="In" Type="String" />
+            <Parameter Name="user_password" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="GetUserID" ReturnType="Collection(String)">
+            <Parameter Name="user_name" Mode="In" Type="String" />
+            <Parameter Name="user_password" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="GetUserName" ReturnType="Collection(String)">
+            <Parameter Name="user_id" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="PostNote">
+            <Parameter Name="strNoteID" Mode="In" Type="String" />
+            <Parameter Name="strPosterID" Mode="In" Type="String" />
+            <Parameter Name="strContent" Mode="In" Type="String" />
+            <Parameter Name="PosterTitle" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="RegisterUser">
+            <Parameter Name="user_id" Mode="In" Type="String" />
+            <Parameter Name="user_email" Mode="In" Type="String" />
+            <Parameter Name="user_name" Mode="In" Type="String" />
+            <Parameter Name="user_password" Mode="In" Type="String" />
+          </FunctionImport>
+        </EntityContainer>
+        <EntityType Name="SNS_Note">
+          <Key>
+            <PropertyRef Name="SNS_Note_ID" />
+          </Key>
+          <Property Name="SNS_Note_ID" Type="String" Nullable="false" MaxLength="36" Unicode="false" FixedLength="false" />
+          <Property Name="SNS_Note_PostID" Type="String" Nullable="false" MaxLength="36" Unicode="false" FixedLength="false" />
+          <Property Name="SNS_Note_Title" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="SNS_Note_Post_Text" Type="String" Nullable="false" MaxLength="500" Unicode="true" FixedLength="false" />
+          <Property Name="SNS_Note_Reply_ID" Type="Int32" />
+          <Property Name="SNS_Note_Date" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="SNS_User_Info">
+          <Key>
+            <PropertyRef Name="SNS_User_ID" />
+          </Key>
+          <Property Name="SNS_User_ID" Type="String" Nullable="false" MaxLength="36" Unicode="false" FixedLength="false" />
+          <Property Name="SNS_User_Email" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="SNS_User_Name" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="SNS_User_PassWord" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="SNS_User_Type" Type="Int32" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="SNSDBModelStoreContainer" CdmEntityContainer="SNSDBEntities">
+          <EntitySetMapping Name="SNS_Note">
+            <EntityTypeMapping TypeName="SNSDBModel.SNS_Note">
+              <MappingFragment StoreEntitySet="SNS_Note">
+                <ScalarProperty Name="SNS_Note_ID" ColumnName="SNS_Note_ID" />
+                <ScalarProperty Name="SNS_Note_PostID" ColumnName="SNS_Note_PostID" />
+                <ScalarProperty Name="SNS_Note_Title" ColumnName="SNS_Note_Title" />
+                <ScalarProperty Name="SNS_Note_Post_Text" ColumnName="SNS_Note_Post_Text" />
+                <ScalarProperty Name="SNS_Note_Reply_ID" ColumnName="SNS_Note_Reply_ID" />
+                <ScalarProperty Name="SNS_Note_Date" ColumnName="SNS_Note_Date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SNS_User_Info">
+            <EntityTypeMapping TypeName="SNSDBModel.SNS_User_Info">
+              <MappingFragment StoreEntitySet="SNS_User_Info">
+                <ScalarProperty Name="SNS_User_ID" ColumnName="SNS_User_ID" />
+                <ScalarProperty Name="SNS_User_Email" ColumnName="SNS_User_Email" />
+                <ScalarProperty Name="SNS_User_Name" ColumnName="SNS_User_Name" />
+                <ScalarProperty Name="SNS_User_PassWord" ColumnName="SNS_User_PassWord" />
+                <ScalarProperty Name="SNS_User_Type" ColumnName="SNS_User_Type" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="CheckUser" FunctionName="SNSDBModel.Store.CheckUser" />
+          <FunctionImportMapping FunctionImportName="GetUserID" FunctionName="SNSDBModel.Store.GetUserID" />
+          <FunctionImportMapping FunctionImportName="GetUserName" FunctionName="SNSDBModel.Store.GetUserName" />
+          <FunctionImportMapping FunctionImportName="PostNote" FunctionName="SNSDBModel.Store.PostNote" />
+          <FunctionImportMapping FunctionImportName="RegisterUser" FunctionName="SNSDBModel.Store.RegisterUser" />
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="无" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

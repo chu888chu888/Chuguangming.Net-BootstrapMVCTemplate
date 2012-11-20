@@ -32,8 +32,15 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -43,15 +50,51 @@
   <ItemGroup>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SNSDB.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SNSDB.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SNSDB.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SNSDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SNSDB.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SNSDB.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="SNS_Note.cs">
+      <DependentUpon>SNSDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SNS_User_Info.cs">
+      <DependentUpon>SNSDB.tt</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <EntityDeploy Include="SNSDB.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>SNSDB.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="packages.config" />
+    <None Include="SNSDB.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>SNSDB.edmx</DependentUpon>
+      <LastGenOutput>SNSDB.Context.cs</LastGenOutput>
+    </None>
+    <None Include="SNSDB.edmx.diagram">
+      <DependentUpon>SNSDB.edmx</DependentUpon>
+    </None>
+    <None Include="SNSDB.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>SNSDB.edmx</DependentUpon>
+      <LastGenOutput>SNSDB.cs</LastGenOutput>
+    </None>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\WebBusiness\WebBusiness.csproj">
-      <Project>{1b895fb9-c3ee-4117-804b-d2586f5f422b}</Project>
-      <Name>WebBusiness</Name>
-    </ProjectReference>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

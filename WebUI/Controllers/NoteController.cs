@@ -37,6 +37,7 @@ namespace WebUI.Controllers
             using (var db = new SNSDBEntities())
             {
                 PagedList<SNS_Note> orders = db.SNS_Note.OrderByDescending(o => o.SNS_Note_Date).ToPagedList(id, 30);
+                
                 return View(orders);
             }
         }
