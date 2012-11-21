@@ -38,17 +38,33 @@
     <div class="container">
         <div class="row-fluid">
             <div class="span2">
-                <div class="well sidebar-nav">
-                    <ul class="nav nav-list">
+
+                <div class="dropdown clearfix">
+                    <h5>类别过滤</h5>
+                    <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu" style="display: block; position: static; margin-bottom: 5px; *width: 180px;">
                         @foreach (var ClassName in ViewBag.classify)
                         {          
                             <li>
-                                <a href="/Home/Detail/@ClassName.Key">@ClassName.Value</a>
+                                <a tabindex="-1" href="/Home/Detail/@ClassName.Key">@ClassName.Value</a>
                             </li>
                         }
+
                     </ul>
                 </div>
-                <!--/.well -->
+                <div class="dropdown clearfix">
+                    <h5>条件过滤</h5>
+                    <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu" style="display: block; position: static; margin-bottom: 5px; *width: 180px;">
+
+                        <li>
+                            <a tabindex="-1" href="#">评论最多的</a>
+                            <a tabindex="-1" href="#">点击最多的</a>
+                            <a tabindex="-1" href="#">转载最多的</a>
+                            <a tabindex="-1" href="#">最近一周的</a>
+                            <a tabindex="-1" href="#">今天的</a>
+                        </li>
+
+                    </ul>
+                </div>
             </div>
             <!--/span-->
             <div class="span10">

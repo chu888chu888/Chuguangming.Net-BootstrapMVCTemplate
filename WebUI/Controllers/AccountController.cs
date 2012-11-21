@@ -37,7 +37,7 @@ namespace WebUI.Controllers
                 {
                     FormsAuthentication.SetAuthCookie(AccountOperation.GetUserID(model.Email, model.Password), true);
 
-                    return RedirectToAction("Manager", "Home");
+                    return RedirectToAction("Manager", "Index");
                 }
             }
 
