@@ -124,10 +124,15 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Content\upload\server\dotnet\Default.aspx.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Content\upload\server\dotnet\UploadHandler.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CaptchaController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\NoteController.cs" />
+    <Compile Include="Controllers\UploadFileController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -158,6 +163,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\Bootstrap\css\bootstrap-ie6.min.css" />
+    <Content Include="Content\Bootstrap\css\bootstrap-image-gallery.min.css" />
     <Content Include="Content\Bootstrap\css\bootstrap-responsive.css" />
     <Content Include="Content\Bootstrap\css\bootstrap.css" />
     <Content Include="Content\Bootstrap\css\docs.css" />
@@ -277,6 +284,36 @@
     <Content Include="Content\themes\base\minified\jquery.ui.slider.min.css" />
     <Content Include="Content\themes\base\minified\jquery.ui.tabs.min.css" />
     <Content Include="Content\themes\base\minified\jquery.ui.theme.min.css" />
+    <Content Include="Content\upload\cors\postmessage.html" />
+    <Content Include="Content\upload\cors\result.html" />
+    <Content Include="Content\upload\css\jquery.fileupload-ui.css" />
+    <Content Include="Content\upload\css\style.css" />
+    <Content Include="Content\upload\img\loading.gif" />
+    <Content Include="Content\upload\img\progressbar.gif" />
+    <Content Include="Content\upload\index.html" />
+    <Content Include="Content\upload\js\bootstrap-image-gallery.min.js" />
+    <Content Include="Content\upload\js\bootstrap.min.js" />
+    <Content Include="Content\upload\js\canvas-to-blob.min.js" />
+    <Content Include="Content\upload\js\cors\jquery.postmessage-transport.js" />
+    <Content Include="Content\upload\js\cors\jquery.xdr-transport.js" />
+    <Content Include="Content\upload\js\jquery.fileupload-fp.js" />
+    <Content Include="Content\upload\js\jquery.fileupload-ui.js" />
+    <Content Include="Content\upload\js\jquery.fileupload.js" />
+    <Content Include="Content\upload\js\jquery.iframe-transport.js" />
+    <Content Include="Content\upload\js\jquery.min.js" />
+    <Content Include="Content\upload\js\load-image.min.js" />
+    <Content Include="Content\upload\js\locale.js" />
+    <Content Include="Content\upload\js\main.js" />
+    <Content Include="Content\upload\js\tmpl.min.js" />
+    <Content Include="Content\upload\js\vendor\jquery.ui.widget.js" />
+    <Content Include="Content\upload\server\dotnet\Default.aspx" />
+    <Content Include="Content\upload\server\gae-go\static\favicon.ico" />
+    <Content Include="Content\upload\server\gae-go\static\robots.txt" />
+    <Content Include="Content\upload\server\gae-python\static\favicon.ico" />
+    <Content Include="Content\upload\server\gae-python\static\robots.txt" />
+    <Content Include="Content\upload\server\node\server.js" />
+    <Content Include="Content\upload\test\index.html" />
+    <Content Include="Content\upload\test\test.js" />
     <Content Include="Content\waterfall.css" />
     <Content Include="Content\waterfall2.css" />
     <Content Include="Global.asax" />
@@ -299,6 +336,22 @@
       <DependentUpon>SNSDB.edmx</DependentUpon>
       <LastGenOutput>SNSDB.cs</LastGenOutput>
     </Content>
+    <Content Include="Content\upload\.gitignore" />
+    <Content Include="Content\upload\package.json" />
+    <Content Include="Content\upload\README.md" />
+    <Content Include="Content\upload\server\gae-go\app.yaml" />
+    <Content Include="Content\upload\server\gae-go\app\main.go" />
+    <Content Include="Content\upload\server\gae-go\resize\resize.go" />
+    <Content Include="Content\upload\server\gae-python\app.yaml" />
+    <Content Include="Content\upload\server\gae-python\main.py" />
+    <Content Include="Content\upload\server\node\.gitignore" />
+    <Content Include="Content\upload\server\node\package.json" />
+    <Content Include="Content\upload\server\node\public\files\thumbnail\.gitignore" />
+    <Content Include="Content\upload\server\node\tmp\.gitignore" />
+    <Content Include="Content\upload\server\php\files\.htaccess" />
+    <Content Include="Content\upload\server\php\index.php" />
+    <Content Include="Content\upload\server\php\thumbnails\.htaccess" />
+    <Content Include="Content\upload\server\php\upload.class.php" />
     <None Include="Scripts\jquery-1.7.1.intellisense.js" />
     <Content Include="Images\1.jpg" />
     <Content Include="Images\10.jpg" />
@@ -384,6 +437,7 @@
     <Content Include="Views\Home\Detail.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\_Captcha.cshtml" />
+    <Content Include="Views\UploadFile\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
